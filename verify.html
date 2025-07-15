@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Verify Product</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    .valid {
+      color: green;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .invalid {
+      color: red;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Product Verification</h1>
+  <div id="result">Checking product...</div>
+
+  <script>
+    // Simulate a database of valid codes
+    const validCodes = ["ABC123", "XYZ789", "A1B2C3D4"];
+
+    // Get the code from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+
+    const resultDiv = document.getElementById("result");
+
+    if (code) {
+      if (validCodes.includes(code)) {
+        resultDiv.innerHTML = "✅ Product validated as authentic";
+        resultDiv.className = "valid";
+      } else {
+        resultDiv.innerHTML = "❌ Invalid or counterfeit product";
+        resultDiv.className = "invalid";
+      }
+    } else {
+      resultDiv.innerHTML = "❗ No code provided.";
+      resultDiv.className = "invalid";
+    }
+  </script>
+
+</body>
+</html>
